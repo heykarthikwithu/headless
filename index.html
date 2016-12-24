@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>heykarthikwithu Headless</title>
+  <script src = "js/angular.min.js"></script>
+</head>
+
+<body ng-app = "demoapp" ng-init = "countries = [{locale:'en-US',name:'United States'}, {locale:'en-GB',name:'United Kingdom'}, {locale:'en-FR',name:'France'}]; quantity = 1;cost = 30; student = {firstname:'kart',lastname:'kum',rollno:1214};marks = [40,50,65,73,60]">
+FIRST DEMO
+<div>
+  <label>Name:</label>
+  <input type = "text" ng-model = "UserName" placeholder = "Enter a name here">
+  <input type = "text" ng-model = "Mail" placeholder = "Enter a email here">
+  <hr />
+  <h1>Hello {{UserName}}! this is you email <span ng-bind = "Mail"></span></h1>
+</div>
+SECOND DEMO
+<div ng-controller = "DemoController" >
+  <h2>Welcome {{demovar.username}}, this is your mail {{demovar.mail}}</h2>
+</div>
+<script>
+  angular.module("demoapp", [])
+    .controller("DemoController", function($scope) {
+      $scope.demovar = {};
+      $scope.demovar.username = "heykarthikwithu";
+      $scope.demovar.mail = "hey@gmail.com";
+    });
+</script>
+THIRD DEMO
+<ol>
+  <li ng-repeat = "country in countries">
+    {{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
+  </li>
+</ol>
+<p>Hello {{student.firstname + " " + student.lastname}}!</p>
+<p>Expense on Books : {{cost * quantity}} Rs</p>
+<p>Roll No: {{student.rollno}}</p>
+<p>Marks(Math): {{marks[3]}}</p>
+</body>
+
+</html>
