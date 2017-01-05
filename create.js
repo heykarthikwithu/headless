@@ -1,7 +1,6 @@
 
 function getCsrfToken(callback) {
   jQuery
-    //.get(Drupal.url('http://127.0.0.1/d82/rest/session/token'))
     .get('http://127.0.0.1/d82/rest/session/token')
     .done(function (data) {
       var csrfToken = data;
@@ -20,6 +19,7 @@ function postNode(csrfToken, node) {
     data: JSON.stringify(node),
     success: function (node) {
       console.log(node);
+      alert('Created..!');
     }
   });
 }
@@ -38,7 +38,7 @@ var newNode = {
   }
 };
 
-function createContent() {
+function create() {
   getCsrfToken(function (csrfToken) {
     postNode(csrfToken, newNode);
   });
